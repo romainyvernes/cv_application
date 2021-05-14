@@ -1,0 +1,25 @@
+.experience {
+  display: flex;
+}
+
+.dates {
+  margin-top: 0.4em;
+  margin-right: 2em;
+  min-width: fit-content;
+}
+
+.experience-label {
+  margin-bottom: 0;
+}
+
+.school-name {
+  margin: 0;
+}
+
+.experience-location {
+  margin-top: 0;
+}
+
+.experience-detail {
+  padding-left: 1em;
+}
