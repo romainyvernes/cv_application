@@ -1,13 +1,13 @@
 import React from 'react';
 
 const Contact = (props) => {
-  const { contact } = props;
+  const { email, phone, linkedIn } = props;
   
   return (
     <div className='contact-info'>
-      <p>{contact.email}</p>
-      <p>{contact.phone}</p>
-      <p>{contact.linkedIn}</p>
+      <p>{email}</p>
+      <p>{phone}</p>
+      <p>{linkedIn}</p>
     </div>
   );
 };

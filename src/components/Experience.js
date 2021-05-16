@@ -1,41 +1,38 @@
 // Use for both work and education
 import React from 'react';
 import '../styles/Experience.css';
+import List from './List';
 
 const Experience = (props) => {
-  const { template, items } = props;
+  const { items } = props;
 
-  if (items.length === 0) {
-    return (
-      <section className='experience'>
-        <div className='dates'>
-          <p>{
-            `${template.dates.start} - 
-            ${template.dates.end || 'Present'}`
-          }</p>
+  return (
+    <div className='experience-wrapper'>
+      {items.map((item) => (
+        <div className='experience' key={item.id}>
+          <div className='dates'>
+            <p>{item.startDate} - {item.endDate || 'Present'}</p>
+          </div>
+          <div>
+            <h4 className='experience-label'>
+              {item.position || item.degree}
+              {item.degree ? `, ${item.major}` : ''}
+            </h4>
+            <p className='experience-institution'>
+              {item.institution || item.company}
+            </p>
+            <p className='experience-location'>{item.location}</p>
+            {item.responsibilities.length === 0
+              ? <List 
+                  items={[item.responsibility]} 
+                  category={'experience'} />
+              : <List items={item.responsibilities} category={'experience'}/>
+            }
+          </div>
         </div>
-        <div>
-          <h4 className='experience-label'>
-            {template.position || template.degree}
-            {template.degree ? `, ${template.major}` : ''}
-          </h4>
-          <p className='experience-institution'>
-            {template.name || template.company}
-          </p>
-          <p className='experience-location'>{template.location}</p>
-          <ul className='experience-detail'>
-            <li>{template.responsibility.content}</li>
-          </ul>
-        </div>
-      </section>
-    );
-  } else {
-    return (
-      <section className='experience'>
-        
-      </section>
-    );
-  }
+      ))}
+    </div>
+  );
 };
 
 export default Experience;

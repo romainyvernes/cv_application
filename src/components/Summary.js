@@ -2,9 +2,9 @@ import React from 'react';
 
 const Summary = (props) => {  
   return (
-    <section className='summary'>
+    <div className='summary'>
       <p>{props.summary}</p>
-    </section>
+    </div>
   );
 };
 

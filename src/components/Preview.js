@@ -1,9 +1,10 @@
 import React from 'react';
 import Header from './Header';
 import Contact from './Contact';
-import Skills from './Skills';
+import List from './List';
 import Summary from './Summary';
 import Experience from './Experience';
+import '../styles/Preview.css';
 
 const Preview = (props) => {
   const { 
@@ -17,30 +18,48 @@ const Preview = (props) => {
   } = props;
   
   return (
-    <div className="app">
+    <div className="resume-page">
       <section className='side-bar'>
         <Header name={general.name} position={general.position}/>
-        
-        <h3 className='side-heading'>Contact</h3>
-        <hr />
-        <Contact contact={general.contact}/>
-        
-        <h3 className='side-heading'>Skills</h3>
-        <hr />
-        <Skills skill={skill} skills={skills}/>
+        <div className='contact-section preview-contact'>
+          <h3 className='side-heading'>Contact</h3>
+          <hr />
+          <Contact 
+            email={general.email} 
+            phone={general.phone} 
+            linkedIn={general.linkedIn} />
+        </div>
+        <div className='skills-section'>
+          <h3 className='side-heading'>Skills</h3>
+          <hr />
+          {skills.length === 0
+            ? <List items={[skill]} category={'skills'}/>
+            : <List items={skills} category={'skills'}/>
+          }
+        </div>
       </section>
       <main>
-        <h3 className='summary-heading'>Summary</h3>
-        <hr />
-        <Summary summary={general.description}/>
-        
-        <h3 className='experience-heading'>Professional Experience</h3>
-        <hr />
-        <Experience template={job} items={jobs}/>
-        
-        <h3 className='experience-heading'>Education</h3>
-        <hr />
-        <Experience template={school} items={schools}/>
+        <section className='summary-section'>
+          <h3 className='summary-heading'>Summary</h3>
+          <hr />
+          <Summary summary={general.description}/>
+        </section>
+        <section className='work-section'>
+          <h3 className='experience-heading'>Professional Experience</h3>
+          <hr />
+          {jobs.length === 0 
+            ? <Experience items={[job]}/>
+            : <Experience items={jobs}/>
+          }
+        </section>
+        <section className='education-section'>
+          <h3 className='experience-heading'>Education</h3>
+          <hr />
+          {schools.length === 0 
+            ? <Experience items={[school]}/>
+            : <Experience items={schools}/>
+          }
+        </section>
       </main>
     </div>
   );
