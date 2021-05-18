@@ -2,7 +2,8 @@ button[type='reset'] {
   margin-right: 1em;
 }
 
-button {
+button[type='submit'],
+button[type='reset'] {
   padding: 0.5em 1em;
   background-color: grey;
   border: none;
@@ -11,8 +12,10 @@ button {
   color: white;
 }
 
-button:hover {
+button[type='submit']:hover,
+button[type='reset']:hover {
   background-color: rgb(218, 218, 218);
   color: black;
   box-shadow: 0 0 0 1px black;
+  cursor: pointer;
 }

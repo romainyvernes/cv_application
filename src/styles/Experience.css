@@ -5,7 +5,7 @@
 .dates {
   margin-top: 0.4em;
   margin-right: 2em;
-  min-width: fit-content;
+  max-width: 6em;
 }
 
 .experience-label {
@@ -22,4 +22,37 @@
 
 .experience-location {
   margin-top: 0;
+}
+
+.experience-edit {
+  font-size: 0.9em;
+}
+
+.experience-edit .dates {
+  margin-right: 0;
+}
+
+.experience-edit .experience {
+  border-left: 2px solid grey;
+  padding-left: 0.8em;
+  margin: 0.8em 0;
+  justify-content: space-between;
+}
+
+.experience-btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-right: 0.5em;
+}
+
+.experience-btn-wrapper button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.2em;
+}
+
+.experience-btn-wrapper button:hover {
+  cursor: pointer;
+  color: grey;
 }

@@ -2,12 +2,18 @@
 import React from 'react';
 import '../styles/Experience.css';
 import List from './List';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Experience = (props) => {
   const { items } = props;
 
   return (
-    <div className='experience-wrapper'>
+    <div 
+      className={`experience-wrapper ${
+        props.editMode ? 'experience-edit' : ''
+      }`}
+    >
       {items.map((item) => (
         <div className='experience' key={item.id}>
           <div className='dates'>
@@ -29,6 +35,25 @@ const Experience = (props) => {
               : <List items={item.responsibilities} category={'experience'}/>
             }
           </div>
+          {props.editMode
+            ? <div className='experience-btn-wrapper'>
+                <button 
+                  name={props.section} 
+                  value={item.id} 
+                  onClick={props.onEdit}
+                >
+                  <FontAwesomeIcon icon={faEdit} />
+                </button>
+                <button 
+                  name={props.section} 
+                  value={item.id} 
+                  onClick={props.onDelete}
+                >
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </button>
+              </div>
+            : ''
+          }
         </div>
       ))}
     </div>

@@ -1,8 +1,26 @@
-.skills-list {
+.skill-list {
   padding: 0;
   list-style: none;
 }
 
 .experience-list {
   padding-left: 1em;
+}
+
+.skill-edit li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-edit button {
+  border: none;
+  background-color: transparent;
+  font-size: 0.9em;
+  color: white;
+  padding: 0;
+}
+
+.skill-edit button:hover {
+  cursor: pointer;
+  color: grey;
 }

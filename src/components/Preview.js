@@ -33,8 +33,8 @@ const Preview = (props) => {
           <h3 className='side-heading'>Skills</h3>
           <hr />
           {skills.length === 0
-            ? <List items={[skill]} category={'skills'}/>
-            : <List items={skills} category={'skills'}/>
+            ? <List items={[skill]} category={'skill'}/>
+            : <List items={skills} category={'skill'}/>
           }
         </div>
       </section>

@@ -5,13 +5,14 @@ import TextArea from './TextArea';
 import '../styles/Form.css';
 
 const Form = (props) => {
-  const { items, btnDisplay } = props;
+  const { items, btnDisplay, onChange, content } = props;
   
   return (
     <form 
       onSubmit={props.onSubmit || undefined} 
       autoComplete='off'
-      data-section-name={props.sectionName || undefined}
+      name={props.sectionName || undefined}
+      data-index={content.index !== undefined ? content.index : undefined}
     >
       {items.map((item, index) => (
         <div 
@@ -22,14 +23,20 @@ const Form = (props) => {
         >
           {item.label && <label htmlFor={item.name}>{item.label}</label>}
           {item.type === 'text-area'
-            ? <TextArea attributes={item}/>
-            : <Input attributes={item}/>
+            ? <TextArea attributes={item} content={content} onChange={onChange} />
+            : <Input attributes={item} content={content} onChange={onChange} />
           }
         </div>
       ))}
       {btnDisplay &&
         <div className='form-btn-wrapper'>
-          <button type='reset'>Cancel</button>
+          <button 
+            type='reset' 
+            name={props.sectionName}
+            onClick={props.onClick}
+          >
+            Cancel
+          </button>
           <button type='submit'>Add</button>
         </div>
       }
